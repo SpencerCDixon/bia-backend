@@ -1,9 +1,7 @@
-var monk   = require('monk'),
-    wrap   = require('co-monk'),
+var wrap   = require('co-monk'),
     parse  = require('co-body'),
     config = require('../config')
-    db     = monk(config.DB_URL),
-    habits = wrap(db.get('habits'))
+    habits = wrap(config.db.get('habits'))
 
 var respondWith = require('../util/respond-with');
 
