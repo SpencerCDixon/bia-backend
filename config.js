@@ -1,9 +1,9 @@
 var monk = require('monk');
 
-var DATABASE_URL = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/bia';
+var DATABASE_URL = process.env.MONGOLAB_URI;
 
 var config = {
-  PORT: process.env.PORT || 4200,
+  PORT: process.env.PORT,
   DB_URL: DATABASE_URL,
   db: monk(DATABASE_URL)
 };

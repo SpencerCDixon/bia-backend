@@ -1,6 +1,7 @@
 var koa    = require('koa'),
     logger = require('koa-logger'),
     router = require('koa-router')(),
+    auth   = require('koa-basic-auth'),
     config = require('./config')
 
 var app = koa();
@@ -18,7 +19,10 @@ router
 // Middleware
 app
   .use(logger())
-  .use(router.routes());
+  .use(auth({
+    name: process.env.AUTH_NAME, pass: process.env.AUTH_PASS
+  }))
+  .use(router.routes())
 
 // Listen
 app.listen(config.PORT, function() {
