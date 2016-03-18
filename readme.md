@@ -1,5 +1,7 @@
+![bia logo](bia-logo.png)
+
 ## Bia Backend
-> In Greek mythology, Bia, (in Greek: Βία, "Violence"), was the personification of force and raw energy
+> In Greek mythology, Bia, was the personification of force and raw energy
 
 Bia is a personal productivity CLI.  This is the backend API that communicates
 with the CLI.
