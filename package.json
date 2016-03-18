@@ -11,7 +11,7 @@
   "author": "Spencer Dixon",
   "license": "MIT",
   "engines": {
-    "node": "5.1.0"
+    "node": "5.7.0"
   },
   "dependencies": {
     "co-body": "^4.0.0",
