@@ -9,7 +9,10 @@
     "test": "mocha --compilers js:babel-register --require ./tests/test-bundle.js --recursive ./tests/**/*.js --full-trace"
   },
   "author": "Spencer Dixon",
-  "license": "ISC",
+  "license": "MIT",
+  "engines": {
+    "node": "5.1.0"
+  },
   "dependencies": {
     "co-body": "^4.0.0",
     "co-monk": "^1.0.0",
