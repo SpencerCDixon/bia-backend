@@ -1,7 +1,8 @@
-var wrap   = require('co-monk'),
-    parse  = require('co-body'),
-    config = require('../config')
-    habits = wrap(config.db.get('habits'))
+import wrap from 'co-monk';
+import parse from 'co-body';
+import config from '../config';
+
+const habits = wrap(config.db.get('habits'))
 
 var respondWith = require('../util/respond-with');
 
@@ -32,10 +33,10 @@ function *show(opts) {
   }
 }
 
-var exports = {
-  create: create,
-  show: show,
-  index: index
+const actions = {
+  create,
+  show,
+  index,
 };
 
-module.exports = exports;
+export default actions;
