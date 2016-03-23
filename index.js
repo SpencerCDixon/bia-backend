@@ -1,8 +1,10 @@
-var koa    = require('koa'),
-    logger = require('koa-logger'),
-    router = require('koa-router')(),
-    auth   = require('koa-basic-auth'),
-    config = require('./config')
+var koa      = require('koa'),
+    logger   = require('koa-logger'),
+    router   = require('koa-router')(),
+    auth     = require('koa-basic-auth'),
+    body     = require('koa-body'),
+    validate = require('koa-validate'),
+    config   = require('./config')
 
 var app = koa();
 
@@ -18,6 +20,8 @@ router
 
 // Middleware
 app
+  .use(body())
+  .use(validate())
   .use(logger())
   .use(auth({
     name: process.env.AUTH_NAME, pass: process.env.AUTH_PASS

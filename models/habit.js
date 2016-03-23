@@ -10,9 +10,14 @@ function *index() {
 }
 
 function *create() {
-  var body  = yield parse.json(this);
-  var habit = yield habits.insert(body)
-  respondWith(this, habit, 201);
+  this.checkBody('description').len(5);
+
+  if (this.errors) {
+    respondWith(this, this.errors, 404);
+  } else {
+    var habit = yield habits.insert(this.request.body)
+    respondWith(this, habit, 201);
+  }
 }
 
 function *show(opts) {
