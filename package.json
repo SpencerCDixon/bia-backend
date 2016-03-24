@@ -4,7 +4,7 @@
   "description": "Backend API for personal productivity CLI bia",
   "main": "index.js",
   "scripts": {
-    "build": "npm run lint && npm run clean && mkdir dist && babel src -d dist",
+    "build": "npm run lint && npm run clean && babel src -d dist",
     "clean": "rimraf dist",
     "dev": "nf start -w --procfile Procfile.dev",
     "db": "mongod --dbpath=./data --port 27017",
