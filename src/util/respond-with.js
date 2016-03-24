@@ -3,4 +3,4 @@ function respondWith(ctx, json, status) {
   ctx.status = status;
 }
 
-module.exports = respondWith;
+export default respondWith;

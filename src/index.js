@@ -7,8 +7,8 @@ import koaBody     from 'koa-body';
 import koaValidate from 'koa-validate';
 
 // Internal
-import config from './config';
-import habits from './models/habit';
+import config from 'config';
+import habits from 'models/habit';
 
 const app = koa();
 const router = koaRouter();
@@ -26,9 +26,9 @@ app
   .use(koaValidate())
   .use(koaLogger())
   .use(koaAuth({
-    name: config.userAuth, pass: config.userPass
+    name: config.userAuth, pass: config.userPass,
   }))
-  .use(router.routes())
+  .use(router.routes());
 
 // Listen
 app.listen(config.PORT, function() {

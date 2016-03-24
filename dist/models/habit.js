@@ -4,14 +4,23 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _coMonk = require('/Users/spencerdixon/Dropbox/CurrentProjects/Javascript/bia-backend/node_modules/co-monk');
+
+var _coMonk2 = _interopRequireDefault(_coMonk);
+
+var _config = require('/Users/spencerdixon/Dropbox/CurrentProjects/Javascript/bia-backend/src/config');
+
+var _config2 = _interopRequireDefault(_config);
+
+var _respondWith = require('/Users/spencerdixon/Dropbox/CurrentProjects/Javascript/bia-backend/src/util/respond-with');
+
+var _respondWith2 = _interopRequireDefault(_respondWith);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var _marked = [index, create, show].map(regeneratorRuntime.mark);
 
-var wrap = require('co-monk'),
-    parse = require('co-body'),
-    config = require('../config');
-habits = wrap(config.db.get('habits'));
-
-var respondWith = require('../util/respond-with');
+var habits = (0, _coMonk2.default)(_config2.default.db.get('habits'));
 
 function index() {
   return regeneratorRuntime.wrap(function index$(_context) {
@@ -45,7 +54,7 @@ function create() {
             break;
           }
 
-          respondWith(this, this.errors, 404);
+          (0, _respondWith2.default)(this, this.errors, 404);
           _context2.next = 9;
           break;
 
@@ -56,7 +65,7 @@ function create() {
         case 7:
           habit = _context2.sent;
 
-          respondWith(this, habit, 201);
+          (0, _respondWith2.default)(this, habit, 201);
 
         case 9:
         case 'end':
@@ -66,23 +75,25 @@ function create() {
   }, _marked[1], this);
 }
 
-function show(opts) {
+function show() {
   var habit;
   return regeneratorRuntime.wrap(function show$(_context3) {
     while (1) {
       switch (_context3.prev = _context3.next) {
         case 0:
           _context3.next = 2;
-          return habits.findOne({ description: this.params.description });
+          return habits.findOne({ description: this.params.description.split('_').join(' ') });
 
         case 2:
           habit = _context3.sent;
 
 
           if (habit) {
-            respondWith(this, habit, 200);
+            (0, _respondWith2.default)(this, habit, 200);
           } else {
-            respondWith(this, { error: 'habit not found' }, 200);
+            (0, _respondWith2.default)(this, {
+              error: 'habit not found'
+            }, 404);
           }
 
         case 4:
