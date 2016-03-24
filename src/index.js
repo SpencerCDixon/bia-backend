@@ -34,3 +34,5 @@ app
 app.listen(config.PORT, function() {
   console.log('Listening on %s', config.PORT);
 });
+
+export default app;
