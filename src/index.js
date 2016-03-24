@@ -15,7 +15,7 @@ const router = koaRouter();
 
 // Routes
 router
-  .redirect('/', '/habits/something')
+  .redirect('/', '/habits')
   .get('/habits', habits.index)
   .get('/habits/:description', habits.show)
   .post('/habits', habits.create);

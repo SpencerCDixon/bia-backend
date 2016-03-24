@@ -3,7 +3,6 @@ import parse from 'co-body';
 import config from '../config';
 
 const habits = wrap(config.db.get('habits'))
-
 var respondWith = require('../util/respond-with');
 
 function *index() {
@@ -23,13 +22,15 @@ function *create() {
 
 function *show(opts) {
   var habit = yield habits.findOne(
-    { description: this.params.description }
+    { description: this.params.description.split('_').join(' ') }
   );
 
   if (habit) {
     respondWith(this, habit, 200);
   } else {
-    respondWith(this, {error: 'habit not found'}, 200);
+    respondWith(this, {
+      error: 'habit not found'
+    }, 404);
   }
 }
 
