@@ -1,4 +1,6 @@
-![bia logo](bia-logo.png)
+<p align="center">
+  <img src="http://i.imgur.com/khI1zOw.png" alt="bia logo" />
+</p>
 
 ## Bia Backend
 > In Greek mythology, Bia, was the personification of force and raw energy
@@ -8,7 +10,7 @@ with the CLI.
 
 ## Development
 ```shell
-npm run db  # sets up mongo
-npm start   # starts server on port 4200
-npm test    # run tests suite
+npm run dev   # sets up mongo and server
+npm test      # run test suite
+npm run build # compile es6 for deployment
 ```
