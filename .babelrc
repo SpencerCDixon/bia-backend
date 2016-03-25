@@ -1,5 +1,8 @@
 { 
   "presets": ["es2015"],
-  "plugins": [["resolver", { "resolveDirs": ["./src"] }]]
+  "plugins": [
+    "transform-object-rest-spread",
+    ["resolver", { "resolveDirs": ["./src"] }]
+  ]
 }
 
