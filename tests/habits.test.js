@@ -30,9 +30,9 @@ describe('(Habits)', function() {
     });
 
     it('fetches habit by description slug', function(done) {
-      const habit = db.get('habits').insert({description: 'my new habit'})
+      const habit = db.get('habits').insert({description: 'my new habit'});
 
-      api.get('/habits/my_new_habit')
+      api.get(`/habits/${habit.query._id}`)
         .auth(userAuth, userPass)
         .expect(200)
         .end((error, response) => {
