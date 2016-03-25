@@ -14,3 +14,10 @@ npm run dev   # sets up mongo and server
 npm test      # run test suite
 npm run build # compile es6 for deployment
 ```
+
+### Habits
+|Method|Endpoint|Description|
+|---|---|---|
+|`GET`|/habits|returns all habits|
+|`GET`|/habits/:description|returns habit with that description|
+|`POST`|/habits|create a new habit must include a `description` param|
