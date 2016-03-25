@@ -16,8 +16,26 @@ npm run build # compile es6 for deployment
 ```
 
 ### Habits
+|Column|Type|Description|
+|---|---|---|
+|`name`|String|name of the habit|
+
 |Method|Endpoint|Description|
 |---|---|---|
 |`GET`|/habits|returns all habits|
-|`GET`|/habits/:description|returns habit with that description|
-|`POST`|/habits|create a new habit must include a `description` param|
+|`GET`|/habits/:id|returns habit|
+|`POST`|/habits|create a new habit must include a `name` param|
+
+### Goals
+|Column|Type|Description|
+|---|---|---|
+|`name`|String|name of the goal|
+|`complete`|Boolean|is goal complete or not|
+|`timeFrame`|Number|number of years to complete goal|
+|`completedAt`|Date|when the goal was completed|
+
+|Method|Endpoint|Description|
+|---|---|---|
+|`GET`|/goals|returns all goals|
+|`GET`|/goals/:id|returns goal |
+|`POST`|/goals|create a new goal must include a `name` and `timeFrame` param|

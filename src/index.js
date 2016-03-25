@@ -9,6 +9,7 @@ import koaValidate from 'koa-validate';
 // Internal
 import config from 'config';
 import habits from 'models/habit';
+import goals  from 'models/goal';
 
 const app = koa();
 const router = koaRouter();
@@ -17,8 +18,11 @@ const router = koaRouter();
 router
   .redirect('/', '/habits')
   .get('/habits', habits.index)
-  .get('/habits/:description', habits.show)
-  .post('/habits', habits.create);
+  .get('/habits/:id', habits.show)
+  .post('/habits', habits.create)
+  .get('/goals', goals.index)
+  .get('/goals/:id', goals.show)
+  .post('/goals', goals.create);
 
 // Middleware
 app
