@@ -4,6 +4,7 @@ import respondWith from 'util/respond-with';
 /*
  * Goal:
  *  - name       String
+ *  - category   String
  *  - complete   Boolean
  *  - timeFrame  Number  (time to complete in years)
  *  - completedAt Date
@@ -18,6 +19,7 @@ function *index() {
 function *create() {
   this.checkBody('name').len(4);
   this.checkBody('timeFrame').isNumeric();
+  this.checkBody('category').isString();
 
   const body = this.request.body;
   body.complete = false;
