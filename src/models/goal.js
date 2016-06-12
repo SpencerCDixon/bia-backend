@@ -8,6 +8,7 @@ import respondWith from '../util/respond-with';
  *  - complete   Boolean
  *  - timeFrame  Number  (time to complete in years)
  *  - completedAt Date
+ *  - createdAt Date
  */
 
 const goals = wrap(config.db.get('goals'));
