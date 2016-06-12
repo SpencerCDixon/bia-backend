@@ -1,6 +1,6 @@
 import wrap from 'co-monk';
-import config from 'config';
-import respondWith from 'util/respond-with';
+import config from '../config';
+import respondWith from '../util/respond-with';
 /*
  * Goal:
  *  - name       String

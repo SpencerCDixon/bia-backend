@@ -7,9 +7,9 @@ import koaBody     from 'koa-body';
 import koaValidate from 'koa-validate';
 
 // Internal
-import config from 'config';
-import habits from 'models/habit';
-import goals  from 'models/goal';
+import config from './config';
+import habits from './models/habit';
+import goals  from './models/goal';
 
 const app = koa();
 const router = koaRouter();

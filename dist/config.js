@@ -4,11 +4,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _monk = require('/Users/spencerdixon/Dropbox/CurrentProjects/Javascript/bia-backend/node_modules/monk');
+var _monk = require('monk');
 
 var _monk2 = _interopRequireDefault(_monk);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+require('dotenv').config();
 
 var DATABASE_URL = process.env.MONGOLAB_URI;
 var config = {

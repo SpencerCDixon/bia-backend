@@ -4,21 +4,26 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _coMonk = require('/Users/spencerdixon/Dropbox/CurrentProjects/Javascript/bia-backend/node_modules/co-monk');
+var _coMonk = require('co-monk');
 
 var _coMonk2 = _interopRequireDefault(_coMonk);
 
-var _config = require('/Users/spencerdixon/Dropbox/CurrentProjects/Javascript/bia-backend/src/config');
+var _config = require('../config');
 
 var _config2 = _interopRequireDefault(_config);
 
-var _respondWith = require('/Users/spencerdixon/Dropbox/CurrentProjects/Javascript/bia-backend/src/util/respond-with');
+var _respondWith = require('../util/respond-with');
 
 var _respondWith2 = _interopRequireDefault(_respondWith);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _marked = [index, create, show].map(regeneratorRuntime.mark);
+
+/*
+ * Habit:
+ *  - description  String
+ */
 
 var habits = (0, _coMonk2.default)(_config2.default.db.get('habits'));
 
@@ -47,7 +52,7 @@ function create() {
     while (1) {
       switch (_context2.prev = _context2.next) {
         case 0:
-          this.checkBody('description').len(5);
+          this.checkBody('name').len(4);
 
           if (!this.errors) {
             _context2.next = 5;
@@ -82,7 +87,7 @@ function show() {
       switch (_context3.prev = _context3.next) {
         case 0:
           _context3.next = 2;
-          return habits.findOne({ description: this.params.description.split('_').join(' ') });
+          return habits.findById(this.params.id);
 
         case 2:
           habit = _context3.sent;
