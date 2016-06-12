@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _regenerator = require('babel-runtime/regenerator');
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
 var _coMonk = require('co-monk');
 
 var _coMonk2 = _interopRequireDefault(_coMonk);
@@ -18,7 +22,7 @@ var _respondWith2 = _interopRequireDefault(_respondWith);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _marked = [index, create, show].map(regeneratorRuntime.mark);
+var _marked = [index, create, show].map(_regenerator2.default.mark);
 
 /*
  * Habit:
@@ -28,7 +32,7 @@ var _marked = [index, create, show].map(regeneratorRuntime.mark);
 var habits = (0, _coMonk2.default)(_config2.default.db.get('habits'));
 
 function index() {
-  return regeneratorRuntime.wrap(function index$(_context) {
+  return _regenerator2.default.wrap(function index$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
@@ -48,7 +52,7 @@ function index() {
 
 function create() {
   var habit;
-  return regeneratorRuntime.wrap(function create$(_context2) {
+  return _regenerator2.default.wrap(function create$(_context2) {
     while (1) {
       switch (_context2.prev = _context2.next) {
         case 0:
@@ -82,7 +86,7 @@ function create() {
 
 function show() {
   var habit;
-  return regeneratorRuntime.wrap(function show$(_context3) {
+  return _regenerator2.default.wrap(function show$(_context3) {
     while (1) {
       switch (_context3.prev = _context3.next) {
         case 0:
