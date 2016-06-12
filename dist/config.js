@@ -10,7 +10,9 @@ var _monk2 = _interopRequireDefault(_monk);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-require('dotenv').config();
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
 
 var DATABASE_URL = process.env.MONGOLAB_URI;
 var config = {
