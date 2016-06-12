@@ -18,8 +18,6 @@ function *index() {
 
 function *create() {
   this.checkBody('name').len(4);
-  this.checkBody('timeFrame').isNumeric();
-  this.checkBody('category').isString();
 
   const body = this.request.body;
   body.complete = false;

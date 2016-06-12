@@ -61,32 +61,30 @@ function create() {
       switch (_context2.prev = _context2.next) {
         case 0:
           this.checkBody('name').len(4);
-          this.checkBody('timeFrame').isNumeric();
-          this.checkBody('category').isString();
 
           body = this.request.body;
 
           body.complete = false;
 
           if (!this.errors) {
-            _context2.next = 9;
+            _context2.next = 7;
             break;
           }
 
           (0, _respondWith2.default)(this, this.errors, 404);
-          _context2.next = 13;
+          _context2.next = 11;
           break;
 
-        case 9:
-          _context2.next = 11;
+        case 7:
+          _context2.next = 9;
           return goals.insert(body);
 
-        case 11:
+        case 9:
           goal = _context2.sent;
 
           (0, _respondWith2.default)(this, goal, 201);
 
-        case 13:
+        case 11:
         case 'end':
           return _context2.stop();
       }
