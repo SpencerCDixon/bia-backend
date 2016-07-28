@@ -15,6 +15,7 @@ if (process.env.NODE_ENV !== 'production') {
 import config from './config';
 import habits from './models/habit';
 import goals  from './models/goal';
+import weights from './models/weight';
 
 const app = koa();
 const router = koaRouter();
@@ -27,7 +28,9 @@ router
   .post('/habits', habits.create)
   .get('/goals', goals.index)
   .get('/goals/:id', goals.show)
-  .post('/goals', goals.create);
+  .post('/goals', goals.create)
+  .post('/weights', weights.create)
+  .get('/weights', weights.index);
 
 // Middleware
 app

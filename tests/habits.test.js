@@ -1,4 +1,4 @@
-import config from 'config';
+import config from '../src/config';
 
 const { userAuth, userPass, db } = config;
 

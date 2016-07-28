@@ -14,7 +14,7 @@
     "server": "nodemon src/index.js --exec babel-node",
     "seed": "babel-node scripts/seed_data.js",
     "seed:prod": "babel-node scripts/seed_data_prod.js",
-    "test": "mocha --compilers js:babel-register --require ./tests/test-bundle.js --recursive ./tests/**/*.js --full-trace"
+    "test": "NODE_ENV=test mocha --compilers js:babel-register --require ./tests/test-bundle.js --recursive ./tests/**/*.js --full-trace"
   },
   "author": "Spencer Dixon",
   "license": "MIT",

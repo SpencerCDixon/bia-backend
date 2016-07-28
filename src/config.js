@@ -3,7 +3,11 @@ if (process.env.NODE_ENV !== 'production') {
   require('dotenv').load();
 }
 
-const DATABASE_URL = process.env.MONGOLAB_URI;
+const isTest = process.env.NODE_ENV === 'test';
+
+let DATABASE_URL = process.env.MONGOLAB_URI;
+DATABASE_URL = isTest ? DATABASE_URL + '/test' : DATABASE_URL;
+
 const config = {
   PORT     : process.env.PORT,
   DB_URL   : DATABASE_URL,
