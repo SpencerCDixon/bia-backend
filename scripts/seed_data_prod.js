@@ -27,14 +27,5 @@ goals.forEach(goal => {
   };
   console.log('Creating for: ', body);
 
-  axios({
-    method: 'post',
-    url: 'http://bia-backend.herokuapp.com/goals',
-    auth: {
-      username: process.env.AUTH_NAME,
-      password: process.env.AUTH_PASS
-    },
-    responseType: 'json',
-    data: body
-  });
+  API.post('/goals', body);
 });

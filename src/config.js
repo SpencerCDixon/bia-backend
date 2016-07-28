@@ -1,6 +1,6 @@
 import monk from 'monk';
 if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config();
+  require('dotenv').load();
 }
 
 const DATABASE_URL = process.env.MONGOLAB_URI;
