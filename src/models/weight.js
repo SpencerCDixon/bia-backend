@@ -30,4 +30,4 @@ function *create() {
 export default {
   index,
   create,
-}
+};

@@ -28,6 +28,10 @@ var _koaValidate = require('koa-validate');
 
 var _koaValidate2 = _interopRequireDefault(_koaValidate);
 
+var _dotenv = require('dotenv');
+
+var _dotenv2 = _interopRequireDefault(_dotenv);
+
 var _config = require('./config');
 
 var _config2 = _interopRequireDefault(_config);
@@ -40,17 +44,25 @@ var _goal = require('./models/goal');
 
 var _goal2 = _interopRequireDefault(_goal);
 
+var _weight = require('./models/weight');
+
+var _weight2 = _interopRequireDefault(_weight);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var app = (0, _koa2.default)();
+if (process.env.NODE_ENV !== 'production') {
+  _dotenv2.default.load();
+}
 
 // Internal
 // Libraries
 
+
+var app = (0, _koa2.default)();
 var router = (0, _koaRouter2.default)();
 
 // Routes
-router.redirect('/', '/habits').get('/habits', _habit2.default.index).get('/habits/:id', _habit2.default.show).post('/habits', _habit2.default.create).get('/goals', _goal2.default.index).get('/goals/:id', _goal2.default.show).post('/goals', _goal2.default.create);
+router.redirect('/', '/habits').get('/habits', _habit2.default.index).get('/habits/:id', _habit2.default.show).post('/habits', _habit2.default.create).get('/goals', _goal2.default.index).get('/goals/:id', _goal2.default.show).post('/goals', _goal2.default.create).post('/weights', _weight2.default.create).get('/weights', _weight2.default.index);
 
 // Middleware
 app.use((0, _koaBody2.default)()).use((0, _koaValidate2.default)()).use((0, _koaLogger2.default)()).use((0, _koaBasicAuth2.default)({

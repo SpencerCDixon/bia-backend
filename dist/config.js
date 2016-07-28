@@ -11,10 +11,14 @@ var _monk2 = _interopRequireDefault(_monk);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config();
+  require('dotenv').load();
 }
 
+var isTest = process.env.NODE_ENV === 'test';
+
 var DATABASE_URL = process.env.MONGOLAB_URI;
+DATABASE_URL = isTest ? DATABASE_URL + '/test' : DATABASE_URL;
+
 var config = {
   PORT: process.env.PORT,
   DB_URL: DATABASE_URL,
