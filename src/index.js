@@ -5,10 +5,9 @@ import koaLogger   from 'koa-logger';
 import koaAuth     from 'koa-basic-auth';
 import koaBody     from 'koa-body';
 import koaValidate from 'koa-validate';
-import dotenv      from 'dotenv';
 
 if (process.env.NODE_ENV !== 'production') {
-  dotenv.load();
+  require('dotenv').load();
 }
 
 // Internal
