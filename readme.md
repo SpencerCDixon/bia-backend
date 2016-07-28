@@ -39,3 +39,13 @@ npm run build # compile es6 for deployment
 |`GET`|/goals|returns all goals|
 |`GET`|/goals/:id|returns goal |
 |`POST`|/goals|create a new goal must include a `name` and `timeFrame` param|
+
+### Weights
+|Column|Type|Description|
+|---|---|---|
+|`amount`|Float|amount I weigh|
+
+|Method|Endpoint|Description|
+|---|---|---|
+|`GET`|/weights|returns all weights|
+|`POST`|/weights|create a new weight|
