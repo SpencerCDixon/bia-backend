@@ -28,10 +28,6 @@ var _koaValidate = require('koa-validate');
 
 var _koaValidate2 = _interopRequireDefault(_koaValidate);
 
-var _dotenv = require('dotenv');
-
-var _dotenv2 = _interopRequireDefault(_dotenv);
-
 var _config = require('./config');
 
 var _config2 = _interopRequireDefault(_config);
@@ -50,12 +46,14 @@ var _weight2 = _interopRequireDefault(_weight);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// Libraries
+
+
 if (process.env.NODE_ENV !== 'production') {
-  _dotenv2.default.load();
+  require('dotenv').load();
 }
 
 // Internal
-// Libraries
 
 
 var app = (0, _koa2.default)();

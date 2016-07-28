@@ -4,7 +4,7 @@
   "description": "Backend API for personal productivity CLI bia",
   "main": "index.js",
   "scripts": {
-    "babel": "babel src -d dist",
+    "babel": "NODE_ENV=production babel src -d dist",
     "build": "npm run lint && npm run clean && npm run babel",
     "clean": "rimraf dist",
     "start": "nf start -w --procfile Procfile.dev",
