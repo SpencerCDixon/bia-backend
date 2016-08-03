@@ -5,6 +5,7 @@ import koaLogger   from 'koa-logger';
 import koaAuth     from 'koa-basic-auth';
 import koaBody     from 'koa-body';
 import koaValidate from 'koa-validate';
+import koaCors     from 'koa-cors';
 
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').load();
@@ -36,6 +37,7 @@ app
   .use(koaBody())
   .use(koaValidate())
   .use(koaLogger())
+  .use(koaCors())
   .use(koaAuth({
     name: config.userAuth, pass: config.userPass,
   }))
