@@ -37,7 +37,8 @@ app
   .use(koaValidate())
   .use(koaLogger())
   .use(koaAuth({
-    name: config.userAuth, pass: config.userPass,
+    name: config.userAuth,
+    pass: config.userPass,
   }))
   .use(router.routes());
 
