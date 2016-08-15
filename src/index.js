@@ -13,11 +13,12 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 // Internal
-import config from './config';
-import habits from './models/habit';
-import goals  from './models/goal';
-import weights from './models/weight';
-import users from './models/user';
+import config   from './config';
+import habits   from './models/habit';
+import goals    from './models/goal';
+import weights  from './models/weight';
+import users    from './models/user';
+import sessions from './models/session';
 
 const app = koa();
 const router = koaRouter({ prefix: '/api' });
@@ -34,7 +35,9 @@ router
   .post('/weights', weights.create)
   .get('/weights', weights.index)
   .get('/users', users.index)
+  .post('/authenticate', sessions.authenticate)
   .post('/users', users.create);
+
 
 // Middleware
 app
