@@ -15,6 +15,7 @@ const config = {
   db       : monk(DATABASE_URL),
   userAuth : process.env.AUTH_NAME,
   userPass : process.env.AUTH_PASS,
+  secret   : process.env.JWT_SECRET,
 };
 
 export default config;
