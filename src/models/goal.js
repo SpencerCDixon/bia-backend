@@ -12,9 +12,10 @@ import respondWith from '../util/respond-with';
  */
 
 const goals = wrap(config.db.get('goals'));
+const users = wrap(config.db.get('users'));
 
 function *index() {
-  this.body = yield goals.find({});
+  this.body = yield goals.find({user_id: this.userId})
 }
 
 function *create() {
@@ -22,6 +23,7 @@ function *create() {
 
   const body = this.request.body;
   body.complete = false;
+  body.user_id = this.userId
 
   if (this.errors) {
     respondWith(this, this.errors, 404);

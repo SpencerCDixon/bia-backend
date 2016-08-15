@@ -17,11 +17,12 @@ function *index() {
 function *create() {
   this.checkBody('email').isEmail("enter a valid email");
   this.checkBody('password').notEmpty().len(3, 20).md5();
+  const { email, password } = this.request.body;
 
   if (this.errors) {
-    respondWith(this, this.errors, 404)
+    return respondWith(this, this.errors, 404)
   }
-  const user = yield users.insert(this.request.body)
+  const user = yield users.insert({ email, password })
   respondWith(this, user, 201);
 }
 

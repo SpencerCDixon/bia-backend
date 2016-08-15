@@ -21,11 +21,32 @@ import users    from './models/user';
 import sessions from './models/session';
 
 const app = koa();
-const router = koaRouter({ prefix: '/api' });
+const unauthRouter = koaRouter({ prefix: '/api' });
+const authRouter   = koaRouter({ prefix: '/api' });
 
 // Routes
-router
-  .redirect('/', '/habits')
+unauthRouter
+  .post('/authenticate', sessions.authenticate)
+  // .post('/verify', sessions.verify)
+  .post('/users', users.create);
+
+function *jwtAuthentication(next) {
+  const token = this.request.body.token ||
+                this.request.query.token ||
+                this.request.headers['x-access-token'];
+
+  if (!token) {
+    this.body = { error: "Unathenticated" };
+    this.status = 403;
+  } else {
+    const verified = koaJwt.verify(token, config.secret)
+    this.userId = verified['_id'];
+    yield next
+  }
+}
+
+authRouter
+  .use(jwtAuthentication)
   .get('/habits', habits.index)
   .get('/habits/:id', habits.show)
   .post('/habits', habits.create)
@@ -33,11 +54,7 @@ router
   .get('/goals/:id', goals.show)
   .post('/goals', goals.create)
   .post('/weights', weights.create)
-  .get('/weights', weights.index)
-  .get('/users', users.index)
-  .post('/authenticate', sessions.authenticate)
-  .post('/users', users.create);
-
+  .get('/weights', weights.index);
 
 // Middleware
 app
@@ -46,21 +63,8 @@ app
   .use(koaLogger())
   .use(koaCors())
   .use(koaJwt({ secret: config.secret, passthrough: true }))
-  // .use(function *(next) {
-    // console.log('CHECKING JWT');
-
-    // if (this.url.match(/^\/login/)) {
-      // console.log('INSIDE MATCH');
-      // var token = koaJwt.sign({
-        // user: 'example'
-      // }, config.secret, { expiresIn: "7d" });
-      // this.status = 200;
-      // this.body = {token: token};
-    // } else {
-      // yield next;
-    // }
-  // })
-  .use(router.routes());
+  .use(unauthRouter.routes())
+  .use(authRouter.routes());
 
 // Listen
 app.listen(config.PORT, function() {
